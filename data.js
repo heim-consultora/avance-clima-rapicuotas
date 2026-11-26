@@ -1,9 +1,9 @@
 // Generado automáticamente por scripts/actualizar.py — no editar a mano.
 window.TABLERO = {
- "generado": "2026-11-26T09:09",
- "ultimaRespuesta": "2026-11-26T08:43",
+ "generado": "2026-11-26T14:09",
+ "ultimaRespuesta": "2026-11-26T13:50",
  "fuente": "SurveyMonkey (automático)",
- "total": 117,
+ "total": 123,
  "porDia": [
   {
    "fecha": "2026-11-24",
@@ -15,25 +15,25 @@ window.TABLERO = {
   },
   {
    "fecha": "2026-11-26",
-   "n": 1
+   "n": 7
   }
  ],
  "region": [
   {
    "nombre": "La Plata y alrededores",
-   "n": 51
+   "n": 53
   },
   {
    "nombre": "Norte",
-   "n": 26
+   "n": 27
   },
   {
    "nombre": "Litoral",
-   "n": 16
+   "n": 18
   },
   {
    "nombre": "Cuyo y Centro",
-   "n": 11
+   "n": 12
   },
   {
    "nombre": "Buenos Aires Interior",
@@ -47,11 +47,11 @@ window.TABLERO = {
  "antiguedad": [
   {
    "nombre": "Menos de cinco años",
-   "n": 51
+   "n": 52
   },
   {
    "nombre": "Cinco años o más",
-   "n": 66
+   "n": 71
   }
  ]
 };

@@ -26,8 +26,8 @@ window.CONFIG = {
     "Sur": null
   },
 
-  // Meta de participación (% sobre la dotación). 53 = igualar la edición anterior.
-  metaTasa: 53,
+  // Meta de participación (% sobre la dotación).
+  metaTasa: 73,
 
   // Edición anterior, para comparar (informe 2025)
   anterior: {

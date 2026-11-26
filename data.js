@@ -1,8 +1,8 @@
 // Generado automáticamente por scripts/actualizar.py — no editar a mano.
 window.TABLERO = {
- "generado": "2026-11-26T08:26",
+ "generado": "2026-11-26T08:40",
  "ultimaRespuesta": "2026-11-25T17:31",
- "fuente": "Exportación de SurveyMonkey",
+ "fuente": "SurveyMonkey (automático)",
  "total": 116,
  "porDia": [
   {

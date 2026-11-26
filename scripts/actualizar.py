@@ -109,7 +109,7 @@ def main():
     ap.add_argument("--csv", help="Exportación CSV de SurveyMonkey")
     args = ap.parse_args()
     if args.csv:
-        datos = agregar(desde_csv(args.csv), "Exportación de SurveyMonkey")
+        datos = agregar(desde_csv(args.csv), "SurveyMonkey (automático)")
     else:
         token, sid = os.environ.get("SM_TOKEN"), os.environ.get("SM_SURVEY_ID")
         if not (token and sid):

@@ -9,7 +9,7 @@ window.CONFIG = {
 
   // Período de campo (formato AAAA-MM-DD)
   fechaInicio: "2026-11-24",
-  fechaCierre: null,            // ej. "2026-12-12" → activa el ritmo diario necesario
+  fechaCierre: "2026-12-11",     // cierre del campo → activa el ritmo diario necesario
 
   // Dotación (personas invitadas a responder)
   dotacionTotal: 400,

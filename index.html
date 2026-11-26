@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Avance encuesta de clima</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: informe de avance de una consultora a su cliente; sobrio, claro, solo participación.
+   IDEA: la hoja de control de campo de un relevamiento, con la marca Heim.
+   PICTURE: anillo de tasa de respuesta + barra hacia la meta, luego día, región y antigüedad.
+   COLOUR and TYPE: blanco y arena, naranja Heim dominante, amarillo y celeste de apoyo; Nunito.
+   LAYOUT: cifras clave y meta arriba, ritmo por día, región y antigüedad lado a lado, comparación 2025. */
+:root{color-scheme:light dark;
+  --bg:light-dark(#FFFFFF,#1B1A19);--band:light-dark(#FAF8F6,#232120);--card:light-dark(#FFFFFF,#262423);
+  --line:light-dark(#ECE8E4,#34312F);--line2:light-dark(#D9D3CD,#4A4643);
+  --ink:light-dark(#2E2D2D,#F3EFEB);--body:light-dark(#555353,#C9C3BD);--muted:light-dark(#6E6A66,#A39D97);--logo:light-dark(#646363,#D2CECB);
+  --or:light-dark(#EA5B0C,#F06A1F);--or-t:light-dark(#C24A08,#FF9A62);--or-s:light-dark(#FFF3EC,#3A2418);
+  --ye:#FECC00;--ye-t:light-dark(#7A5500,#FFD84D);--ye-s:light-dark(#FFF8D9,#352D14);
+  --bl:#0DACD5;--bl-t:light-dark(#136A85,#6FD3EE);--bl-s:light-dark(#E6F6FB,#14303A);
+  --shadow:light-dark(rgba(46,45,45,.08),rgba(0,0,0,.35))}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--band);color:var(--ink);font:16px/1.55 "Nunito",system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:max(5vw,16px)}
+header{background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand span{font-family:Verdana,"DejaVu Sans",sans-serif;font-weight:700;font-size:19px;color:var(--logo)}
+.para{font-size:14px;color:var(--muted);font-weight:700}
+.para b{color:var(--ink)}
+.stripe{display:flex;height:5px}.stripe i{flex:1}
+.hero{background:var(--bg);padding-block:clamp(28px,4vw,52px)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,4vw,56px);align-items:center}
+h1{font-size:clamp(30px,4.2vw,46px);line-height:1.08;margin:0 0 12px;font-weight:800;text-wrap:balance}
+.sub{color:var(--body);margin:0;max-width:62ch}
+.ring{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.ring-fig{position:relative;width:clamp(170px,19vw,210px);aspect-ratio:1}
+.ring-fig svg{width:100%;height:100%;display:block}
+.ring-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring-c b{font-size:clamp(32px,3.6vw,42px);line-height:1;font-weight:800;font-variant-numeric:tabular-nums}
+.ring-c span{font-size:14px;color:var(--muted);margin-top:4px}
+.ring figcaption{font-size:14px;color:var(--muted);text-align:center;max-width:16em}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin-top:clamp(24px,3vw,36px)}
+.kpi{background:var(--band);border-radius:16px;padding:18px 20px;border-top:4px solid var(--c,var(--or))}
+.kpi .l{font-size:14px;color:var(--muted);font-weight:700}
+.kpi .v{font-size:clamp(30px,4vw,40px);font-weight:800;line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi .v.sm{font-size:22px;line-height:1.5}
+.kpi .s{font-size:14px;color:var(--muted)}
+main{padding-block:12px 8px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,2.4vw,28px);margin-top:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:12px}
+.grid2 .panel{margin-top:12px}
+h2{font-size:21px;margin:0 0 4px;font-weight:800}
+.note{font-size:15px;color:var(--muted);margin:0 0 18px}
+/* Meta */
+.meta-bar{position:relative;height:22px;border-radius:999px;background:var(--or-s);margin:34px 0 10px}
+.meta-bar .fill{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--or)}
+.meta-bar .mark{position:absolute;top:-30px;bottom:-6px;width:0;border-left:2px dashed var(--ink)}
+.meta-bar .mark span{position:absolute;bottom:calc(100% - 22px);left:6px;font-size:13px;font-weight:800;white-space:nowrap}
+.meta-bar .mark.right span{left:auto;right:6px}
+.scale{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.meta-txt{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:18px}
+.meta-txt div{background:var(--band);border-radius:14px;padding:14px 16px}
+.meta-txt b{display:block;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.meta-txt span{font-size:14px;color:var(--muted)}
+/* Columnas por día */
+.cols{display:flex;align-items:flex-end;gap:10px;height:230px;overflow-x:auto;padding-top:28px;border-bottom:1px solid var(--line2)}
+.col{flex:1 0 48px;max-width:110px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.col .b{width:64%;background:var(--or);border-radius:6px 6px 0 0;min-height:2px}
+.col.hoy .b{background:var(--ye)}
+.col .n{font-weight:800;font-size:15px;margin-bottom:4px;font-variant-numeric:tabular-nums}
+.xl{display:flex;gap:10px;overflow-x:auto}.xl span{flex:1 0 48px;max-width:110px;text-align:center;font-size:13px;color:var(--muted);padding-top:6px;white-space:nowrap}
+.xl span.hoy{color:var(--ye-t);font-weight:800}
+/* Filas */
+.row{display:grid;grid-template-columns:minmax(0,11em) 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .t{position:relative;background:var(--band);border-radius:999px;height:14px}
+.row .t i{position:absolute;inset:0 auto 0 0;background:var(--c,var(--or));border-radius:999px}
+.row .t u{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed var(--ink);opacity:.7}
+.row .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.row .num b{display:inline-block;min-width:2.4em}
+.row .num span{color:var(--muted);display:inline-block;min-width:4em}
+.hdr{padding:0 0 6px;border-bottom:1px solid var(--line2)}
+.hdr .num b,.hdr .num span{font-size:13px;font-weight:800;color:var(--muted)}
+.hint{margin:14px 0 0;font-size:14px;color:var(--muted);background:var(--band);border-radius:12px;padding:10px 14px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
+th,td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:13px;color:var(--muted)}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+details{margin-top:12px;font-size:15px;color:var(--muted)}
+summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--or-t)}
+summary:focus-visible{outline:3px solid var(--bl);outline-offset:3px;border-radius:6px}
+/* Comparación */
+.cmp .row{grid-template-columns:minmax(0,13em) 1fr auto}
+.foot{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+.foot b{color:var(--ink)}
+@media(max-width:640px){.head{grid-template-columns:1fr}.ring{align-items:flex-start}.ring figcaption{text-align:left}
+  .row,.cmp .row{grid-template-columns:1fr auto}.row .t{grid-column:1/-1;order:3}.hdr>div:nth-child(2){display:none}.meta-bar .mark span{left:auto;right:6px}}
+@media(prefers-reduced-motion:no-preference){.fill,.row .t i,.col .b{transition:width .6s ease,height .6s ease}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand" aria-label="Heim Consultora">
+      <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 L88 28 L88 72 L50 94 L12 72 L12 28 Z" fill="none" stroke="#FECC00" stroke-width="13" stroke-linejoin="round"/><path d="M12 72 L12 28 L50 6 L88 28" fill="none" stroke="#EA5B0C" stroke-width="13" stroke-linejoin="round"/><path d="M88 72 L50 94 L12 72" fill="none" stroke="#0DACD5" stroke-width="13" stroke-linejoin="round"/><circle cx="50" cy="50" r="17" fill="#FECC00"/><path d="M33 50 A17 17 0 0 1 50 33 L50 50 Z" fill="#EA5B0C"/></svg>
+      <span>Heim Consultora</span>
+    </div>
+    <div class="para">Informe de avance para <b id="cliente">—</b></div>
+  </div>
+  <div class="stripe" aria-hidden="true"><i style="background:#EA5B0C"></i><i style="background:#FECC00"></i><i style="background:#0DACD5"></i></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h1 id="titulo">Encuesta de Clima Laboral: avance de participación</h1>
+        <p class="sub">Seguimiento del campo para saber dónde reforzar la convocatoria. Muestra solo cuántas personas respondieron, cuándo y desde qué región y antigüedad. No muestra respuestas: la encuesta es anónima.</p>
+      </div>
+      <figure class="ring">
+        <div class="ring-fig"><svg viewBox="0 0 120 120" id="ring" role="img"></svg><div class="ring-c"><b id="r-pct">—</b><span id="r-n">—</span></div></div>
+        <figcaption id="r-cap">Tasa de respuesta</figcaption>
+      </figure>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="l">Respuestas totales</div><div class="v" id="k-total">—</div><div class="s" id="k-total-s"></div></div>
+      <div class="kpi" style="--c:var(--ye)"><div class="l">Respuestas de hoy</div><div class="v" id="k-hoy">—</div><div class="s" id="k-hoy-s"></div></div>
+      <div class="kpi" style="--c:var(--bl)"><div class="l">Día de campo</div><div class="v" id="k-dia">—</div><div class="s" id="k-dia-s"></div></div>
+      <div class="kpi" style="--c:var(--line2)"><div class="l">Última respuesta recibida</div><div class="v sm" id="k-ult">—</div><div class="s">Hora de Argentina</div></div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="panel" id="meta">
+    <h2>Camino a la meta</h2>
+    <p class="note" id="meta-note"></p>
+    <div class="meta-bar" id="meta-bar" role="img"><div class="fill" id="meta-fill"></div><div class="mark" id="meta-mark"><span id="meta-lbl"></span></div></div>
+    <div class="scale"><span>0%</span><span>50%</span><span>100% de la dotación</span></div>
+    <div class="meta-txt" id="meta-txt"></div>
+  </section>
+
+  <section class="panel" id="por-dia">
+    <h2>Respuestas por día</h2>
+    <p class="note">Encuestas completadas cada día de campo (hora de Argentina). El día de hoy, en amarillo, todavía está en curso.</p>
+    <div class="cols" id="cols"></div>
+    <div class="xl" id="xl"></div>
+    <details><summary>Ver tabla con el acumulado</summary>
+      <table><thead><tr><th>Fecha</th><th class="r">Respuestas</th><th class="r">Acumulado</th></tr></thead><tbody id="tab"></tbody></table>
+    </details>
+  </section>
+
+  <div class="grid2">
+    <section class="panel" id="por-region">
+      <h2>Región en la que trabaja</h2>
+      <p class="note" id="reg-note"></p>
+      <div id="reg"></div>
+    </section>
+    <section class="panel" id="por-antiguedad">
+      <h2>Antigüedad en la empresa</h2>
+      <p class="note">Cantidad y % sobre el total de respuestas.</p>
+      <div id="ant"></div>
+    </section>
+  </div>
+
+  <section class="panel cmp" id="comparacion">
+    <h2 id="cmp-h">Frente a la edición anterior</h2>
+    <p class="note" id="cmp-note"></p>
+    <div id="cmp"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="stripe" aria-hidden="true"><i style="background:#EA5B0C"></i><i style="background:#FECC00"></i><i style="background:#0DACD5"></i></div>
+  <div class="wrap foot">
+    <span><b>Heim Consultora</b> · Investigación social aplicada</span>
+    <span id="fuente">Solo conteos agregados de participación. Las respuestas son anónimas.</span>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script>
+{
+  const C = Object.assign({dotacionPorRegion:{},metaTasa:null,anterior:null}, window.CONFIG || {});
+  const D = Object.assign({total:0,porDia:[],region:[],antiguedad:[]}, window.TABLERO || {});
+  const $ = id => document.getElementById(id);
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  const fmtN = n => Number(n).toLocaleString('es-AR');
+  const fmtP = (x, d=0) => x == null || !isFinite(x) ? '—' : x.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d}) + '%';
+  const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const fecha = s => { const [y,m,d] = String(s).split('-'); return Number(d) + ' ' + meses[Number(m)-1]; };
+  const iso = d => d.toISOString().slice(0,10);
+  const addDays = (s, n) => { const d = new Date(s + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return iso(d); };
+  const diff = (a, b) => Math.round((new Date(b + 'T12:00:00Z') - new Date(a + 'T12:00:00Z')) / 864e5);
+  const hoy = new Intl.DateTimeFormat('en-CA',{timeZone:'America/Argentina/Buenos_Aires'}).format(new Date());
+
+  const dot = Number(C.dotacionTotal) || 0;
+  const tasa = dot ? D.total / dot * 100 : null;
+  const meta = C.metaTasa && dot ? Math.ceil(dot * C.metaTasa / 100) : null;
+
+  $('cliente').textContent = C.cliente || '—';
+  $('titulo').textContent = 'Encuesta de Clima Laboral ' + (C.edicion || '') + ': avance de participación';
+
+  // Anillo
+  {
+    const p = Math.min(1, (tasa || 0) / 100), r = 50, L = 2 * Math.PI * r, ns = 'http://www.w3.org/2000/svg', svg = $('ring');
+    const circ = (color, dash, w) => { const c = document.createElementNS(ns,'circle'); c.setAttribute('cx',60); c.setAttribute('cy',60); c.setAttribute('r',r); c.setAttribute('fill','none'); c.setAttribute('stroke-width', w); c.style.stroke = color; if (dash) { c.setAttribute('stroke-dasharray', dash); c.setAttribute('transform','rotate(-90 60 60)'); c.setAttribute('stroke-linecap','round'); } svg.appendChild(c); };
+    circ('var(--or-s)', null, 16);
+    if (p > 0) circ('var(--or)', (p * L) + ' ' + L, 16);
+    if (C.metaTasa) { const a = (C.metaTasa / 100) * 2 * Math.PI - Math.PI / 2, x1 = 60 + 41 * Math.cos(a), y1 = 60 + 41 * Math.sin(a), x2 = 60 + 59 * Math.cos(a), y2 = 60 + 59 * Math.sin(a);
+      const l = document.createElementNS(ns,'line'); l.setAttribute('x1',x1); l.setAttribute('y1',y1); l.setAttribute('x2',x2); l.setAttribute('y2',y2); l.setAttribute('stroke-width',2.5); l.style.stroke = 'var(--ink)'; svg.appendChild(l); }
+    $('r-pct').textContent = fmtP(tasa);
+    $('r-n').textContent = fmtN(D.total) + ' de ' + (dot ? fmtN(dot) : '—');
+    $('r-cap').textContent = 'Tasa de respuesta sobre la dotación' + (C.dotacionConfirmada ? '' : ' estimada') + (C.metaTasa ? ' · la línea marca la meta' : '');
+    svg.setAttribute('aria-label', 'Tasa de respuesta ' + fmtP(tasa) + ': ' + D.total + ' de ' + dot + ' personas');
+  }
+
+  // Días de campo (rellena días sin respuestas)
+  const porFecha = Object.fromEntries(D.porDia.map(d => [d.fecha, d.n]));
+  const inicio = C.fechaInicio || (D.porDia[0] && D.porDia[0].fecha) || hoy;
+  const finVista = C.fechaCierre && C.fechaCierre < hoy ? C.fechaCierre : hoy;
+  const dias = [];
+  for (let f = inicio; f <= finVista && dias.length < 120; f = addDays(f, 1)) dias.push({fecha:f, n:porFecha[f] || 0});
+  D.porDia.forEach(d => { if (!dias.some(x => x.fecha === d.fecha)) dias.push(d); });
+  dias.sort((a,b) => a.fecha < b.fecha ? -1 : 1);
+  const enCurso = !C.fechaCierre || hoy <= C.fechaCierre;
+  const diaN = diff(inicio, finVista) + 1;
+  const diasTot = C.fechaCierre ? diff(inicio, C.fechaCierre) + 1 : null;
+  const diasRest = C.fechaCierre && enCurso ? diff(hoy, C.fechaCierre) + 1 : null; // incluye hoy
+
+  // KPIs
+  $('k-total').textContent = fmtN(D.total);
+  $('k-total-s').textContent = 'de ' + (dot ? fmtN(dot) : '—') + ' personas' + (C.dotacionConfirmada ? '' : ' (estimado)');
+  const nHoy = porFecha[hoy] || 0, nAyer = porFecha[addDays(hoy,-1)];
+  $('k-hoy').textContent = enCurso ? fmtN(nHoy) : '—';
+  $('k-hoy-s').textContent = enCurso ? 'Ayer: ' + fmtN(nAyer || 0) : 'Campo cerrado';
+  $('k-dia').textContent = diasTot ? diaN + ' de ' + diasTot : String(diaN);
+  $('k-dia-s').textContent = 'Desde el ' + fecha(inicio) + (C.fechaCierre ? ' · cierra el ' + fecha(C.fechaCierre) : ' · cierre a confirmar');
+  if (D.ultimaRespuesta) { const [f,h] = String(D.ultimaRespuesta).split('T'); $('k-ult').textContent = fecha(f) + ', ' + (h || '').slice(0,5) + ' h'; }
+
+  // Meta
+  {
+    const ritmo = D.total / Math.max(1, diaN);
+    $('meta-fill').style.width = Math.min(100, tasa || 0) + '%';
+    const mk = $('meta-mark');
+    if (meta) {
+      mk.style.left = C.metaTasa + '%'; if (C.metaTasa > 70) mk.classList.add('right');
+      const ant = C.anterior && C.anterior.tasa === C.metaTasa ? ' (igualar ' + (C.anterior.nombre || 'la edición anterior').toLowerCase() + ')' : '';
+      $('meta-lbl').textContent = 'Meta ' + fmtP(C.metaTasa) + ant;
+      $('meta-note').textContent = 'La meta es llegar al ' + fmtP(C.metaTasa) + ' de la dotación: ' + fmtN(meta) + ' respuestas.';
+      const faltan = Math.max(0, meta - D.total);
+      const cajas = [[fmtN(faltan), faltan ? 'respuestas faltan para la meta' : 'meta alcanzada'], [fmtN(Math.round(ritmo)), 'respuestas por día en promedio hasta hoy']];
+      if (diasRest && faltan) cajas.push([fmtN(Math.ceil(faltan / diasRest)), 'por día hacen falta hasta el ' + fecha(C.fechaCierre)]);
+      else if (!C.fechaCierre) cajas.push(['—', 'ritmo necesario: se calcula con la fecha de cierre']);
+      cajas.forEach(([b,s]) => { const d = el('div'); d.appendChild(el('b',null,b)); d.appendChild(el('span',null,s)); $('meta-txt').appendChild(d); });
+      $('meta-bar').setAttribute('aria-label', 'Avance ' + fmtP(tasa) + ' sobre una meta de ' + fmtP(C.metaTasa));
+    } else { $('meta').hidden = true; }
+  }
+
+  // Por día
+  {
+    const max = Math.max(1, ...dias.map(d => d.n)); let acum = 0;
+    dias.forEach(d => {
+      const h = d.fecha === hoy && enCurso, c = el('div','col' + (h ? ' hoy' : '')); c.title = fecha(d.fecha) + ': ' + d.n + ' respuestas';
+      c.appendChild(el('div','n',fmtN(d.n)));
+      const b = el('div','b'); b.style.height = (d.n / max * 85) + '%'; c.appendChild(b);
+      $('cols').appendChild(c); $('xl').appendChild(el('span', h ? 'hoy' : null, h ? 'Hoy' : fecha(d.fecha)));
+      acum += d.n;
+      const tr = el('tr'); tr.appendChild(el('td',null,fecha(d.fecha) + (h ? ' (hoy)' : ''))); tr.appendChild(el('td','r',fmtN(d.n))); tr.appendChild(el('td','r',fmtN(acum))); $('tab').appendChild(tr);
+    });
+    if (!dias.length) $('cols').appendChild(el('p','note','Todavía no hay respuestas.'));
+  }
+
+  // Filas genéricas
+  const encabezado = (box, a, b) => { const h = el('div','row hdr'); h.appendChild(el('div')); h.appendChild(el('div')); const n = el('div','num'); n.appendChild(el('b',null,a)); n.appendChild(el('span',null,b)); h.appendChild(n); box.appendChild(h); };
+  const fila = (box, nombre, ancho, b, s, opt = {}) => {
+    const r = el('div','row'); r.title = opt.title || nombre; r.appendChild(el('div',null,nombre));
+    const t = el('div','t'); if (opt.color) t.style.setProperty('--c', opt.color);
+    const i = el('i'); i.style.width = Math.min(100, ancho) + '%'; t.appendChild(i);
+    if (opt.meta != null) { const u = el('u'); u.style.left = opt.meta + '%'; t.appendChild(u); }
+    r.appendChild(t); const n = el('div','num'); n.appendChild(el('b',null,b)); n.appendChild(el('span',null,s)); r.appendChild(n); box.appendChild(r);
+  };
+
+  // Región
+  {
+    const box = $('reg'), dr = C.dotacionPorRegion || {}, conDot = D.region.some(x => Number(dr[x.nombre]) > 0);
+    if (conDot) {
+      $('reg-note').textContent = 'Tasa de respuesta de cada región sobre su dotación' + (C.metaTasa ? '. La línea punteada marca la meta.' : '.');
+      encabezado(box, 'N', 'Tasa');
+      const filas = D.region.map(x => ({...x, d:Number(dr[x.nombre]) || 0})).map(x => ({...x, t: x.d ? x.n / x.d * 100 : null}))
+        .sort((a,b) => (a.t ?? 999) - (b.t ?? 999));
+      filas.forEach(x => fila(box, x.nombre, x.t || 0, fmtN(x.n), x.d ? fmtP(x.t) : 's/d',
+        {meta:C.metaTasa, color: x.t != null && C.metaTasa && x.t < C.metaTasa * .6 ? 'var(--ye)' : null, title: x.nombre + ': ' + x.n + (x.d ? ' de ' + x.d : '')}));
+      box.appendChild(el('p','hint','Ordenadas de menor a mayor tasa: las primeras son donde más conviene reforzar la convocatoria. En amarillo, las que están lejos de la meta.'));
+    } else {
+      $('reg-note').textContent = 'Cantidad y % sobre el total de respuestas.';
+      encabezado(box, 'N', '%');
+      const m = Math.max(1, ...D.region.map(x => x.n));
+      D.region.forEach(x => fila(box, x.nombre, x.n / m * 100, fmtN(x.n), fmtP(D.total ? x.n / D.total * 100 : null, 1)));
+      box.appendChild(el('p','hint','La tasa de respuesta de cada región se mostrará cuando se confirme su dotación.'));
+    }
+  }
+
+  // Antigüedad
+  {
+    const box = $('ant'), m = Math.max(1, ...D.antiguedad.map(x => x.n));
+    encabezado(box, 'N', '%');
+    D.antiguedad.forEach(x => fila(box, x.nombre, x.n / m * 100, fmtN(x.n), fmtP(D.total ? x.n / D.total * 100 : null, 1), {color:'var(--bl)'}));
+  }
+
+  // Comparación con la edición anterior
+  {
+    const A = C.anterior;
+    if (A && A.respuestas) {
+      $('cmp-h').textContent = 'Frente a la ' + (A.nombre || 'edición anterior').toLowerCase();
+      $('cmp-note').textContent = (A.nombre || 'La edición anterior') + ' (' + A.periodo + ') cerró con ' + fmtN(A.respuestas) + ' respuestas, el ' + fmtP(A.tasa) + ' de la dotación, en ' + A.dias + ' días de campo.';
+      const box = $('cmp'); encabezado(box, 'Resp.', 'Tasa');
+      fila(box, (A.nombre || 'Anterior') + ' (final)', A.tasa, fmtN(A.respuestas), fmtP(A.tasa), {color:'var(--bl)'});
+      fila(box, 'Edición ' + (C.edicion || 'actual') + ' (día ' + diaN + ')', tasa || 0, fmtN(D.total), fmtP(tasa), {});
+      const pctDeAnt = D.total / A.respuestas * 100;
+      box.appendChild(el('p','hint', 'Con ' + diaN + (diaN === 1 ? ' día' : ' días') + ' de campo ya se reunió el ' + fmtP(pctDeAnt) + ' de las respuestas que tuvo la edición anterior en ' + A.dias + ' días.'));
+    } else { $('comparacion').hidden = true; }
+  }
+
+  $('fuente').textContent = 'Fuente: ' + (D.fuente || 'SurveyMonkey') + (/automático/i.test(D.fuente || '') ? '. Se actualiza cada hora.' : '.') + ' Solo conteos agregados: las respuestas son anónimas.';
+}
+</script>
+</body>
+</html>

@@ -80,8 +80,8 @@ def desde_csv(ruta):
     filas = []
     for r in rows[1:]:
         if not r or not r[0].strip() or not r[i_fin].strip(): continue
-        # El export de SurveyMonkey viene en la zona horaria de la cuenta (Argentina)
-        fin = datetime.fromisoformat(r[i_fin]).replace(tzinfo=ART)
+        # El export/sincronización de SurveyMonkey viene en UTC: se pasa a hora argentina
+        fin = datetime.fromisoformat(r[i_fin]).replace(tzinfo=timezone.utc).astimezone(ART)
         filas.append((fin, r[i_reg].strip() or None, r[i_ant].strip() or None))
     return filas
 

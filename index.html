@@ -242,7 +242,10 @@ summary:focus-visible{outline:3px solid var(--bl);outline-offset:3px;border-radi
   $('k-hoy-s').textContent = enCurso ? 'Ayer: ' + fmtN(nAyer || 0) : 'Campo cerrado';
   $('k-dia').textContent = diasTot ? diaN + ' de ' + diasTot : String(diaN);
   $('k-dia-s').textContent = 'Desde el ' + fecha(inicio) + (C.fechaCierre ? ' · cierra el ' + fecha(C.fechaCierre) : ' · cierre a confirmar');
-  if (D.ultimaRespuesta) { const [f,h] = String(D.ultimaRespuesta).split('T'); $('k-ult').textContent = fecha(f) + ', ' + (h || '').slice(0,5) + ' h'; }
+  // Acepta el formato propio (ultimaRespuesta) y el de Sigrid (actualizado)
+  const marca = D.ultimaRespuesta || D.actualizado || D.generado;
+  if (!D.ultimaRespuesta && marca) $('k-ult').previousElementSibling.textContent = 'Datos actualizados al';
+  if (marca) { const [f,h] = String(marca).split('T'); $('k-ult').textContent = fecha(f) + ', ' + (h || '').slice(0,5) + ' h'; }
 
   // Meta
   {

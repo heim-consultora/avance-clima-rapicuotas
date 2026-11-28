@@ -1,9 +1,9 @@
 // Generado automáticamente por scripts/actualizar.py — no editar a mano.
 window.TABLERO = {
- "generado": "2026-11-27T18:09",
- "ultimaRespuesta": "2026-11-27T17:50",
+ "generado": "2026-11-28T14:09",
+ "ultimaRespuesta": "2026-11-28T11:12",
  "fuente": "SurveyMonkey (automático)",
- "total": 133,
+ "total": 134,
  "porDia": [
   {
    "fecha": "2026-11-24",
@@ -20,6 +20,10 @@ window.TABLERO = {
   {
    "fecha": "2026-11-27",
    "n": 5
+  },
+  {
+   "fecha": "2026-11-28",
+   "n": 1
   }
  ],
  "region": [
@@ -29,7 +33,7 @@ window.TABLERO = {
   },
   {
    "nombre": "Norte",
-   "n": 28
+   "n": 29
   },
   {
    "nombre": "Litoral",
@@ -51,7 +55,7 @@ window.TABLERO = {
  "antiguedad": [
   {
    "nombre": "Menos de cinco años",
-   "n": 56
+   "n": 57
   },
   {
    "nombre": "Cinco años o más",
